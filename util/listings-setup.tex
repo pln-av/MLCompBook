@@ -1,0 +1,47 @@
+% from a post by https://tex.stackexchange.com/users/12571/jldiaz
+\usepackage{xcolor}
+\newcommand{\listgray}{242}
+\newcommand{\listspread}{0.85}
+\newcommand{\clist}{
+\lstset{
+        language=C,
+        backgroundcolor=\color[RGB]{\listgray,\listgray,\listgray},
+        basicstyle=\linespread{\listspread}\ttfamily\small,
+        keywordstyle=\color[rgb]{0.13,0.29,0.53}\bfseries,
+        stringstyle=\color[rgb]{0.31,0.60,0.02},
+        commentstyle=\color[rgb]{0.56,0.35,0.01}\itshape,
+        numberstyle=\footnotesize,
+        showspaces=false,
+        showstringspaces=false,
+        numbersep=5pt,
+        numbers=left,
+        stepnumber=1,
+        tabsize=2,
+        breaklines=true,
+        breakatwhitespace=false,
+        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+        morekeywords={std,cout,template,endl},
+        otherkeywords={std,cout,template,endl}
+}
+}
+\newcommand{\blist}{
+\lstset{
+        language={},
+        backgroundcolor=\color[RGB]{\listgray,\listgray,\listgray},
+        basicstyle=\linespread{\listspread}\ttfamily\small,
+        keywordstyle=\color[rgb]{0,0,0}\bfseries,
+        stringstyle=\color[rgb]{0,0,0},
+        commentstyle=\color[rgb]{0,0,0}\itshape,
+        numberstyle=\footnotesize,
+        showspaces=false,
+        showstringspaces=false,
+        numbersep=5pt,
+        numbers=left,   
+        stepnumber=1,
+        tabsize=2,
+        breaklines=true,
+        breakatwhitespace=false,
+        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+}
+
