@@ -24,32 +24,38 @@ and link programs using the Intel MKL.
 
 In the documentation it refers to `<Composer XD directory>` and `<mkl directory>`
 directories.  I think these are
-```console
+\blist{}
+```bash
 /opt/intel
 /opt/intel/mkl
 ```
 on my system  So we have the relevant installs.  Now we need to set a number of
 environment variables which is done using scripts in
-```console
+blist{}
+```bash
 /opt/intel/mkl/bin
 ```
 To use the `IA-64` architecture we source the following file
-```console
+\blist{}
+```bash
 patricklnoble$ source /opt/intel/mkl/bin/mklvars.sh intel64
 ```
 which appears to set a number of import environment variables like `MKLROOT` and
 `DYLD_LIBRARY_PATH`.  Note that the docs suggest that directories
-```console
+\blist{}
+```bash
 /opt/intel/mkl/bash/[intel32/intel64]
 ```
 exist but I can't seem to see them.  The download also clearly knows we are on a
 mac - note where `MKLROOT` points
-```console
+\blist{}
+```bash
 Patricks-MacBook-Pro:examples patricklnoble$ echo $MKLROOT
 /opt/intel/compilers_and_libraries_2018.1.126/mac/mkl
 ```
 It looks like the headers required are all in `$MKLROOT/include`, and we can see them
 all being included by the header `$MKLROOT/include/mkl.h`
+\clist{}
 ```cpp
 patricklnoble$ grep '#include' $MKLROOT/include/mkl.h | head -n 5
 #include "mkl_version.h"
@@ -62,20 +68,24 @@ The libraries themselves are in `$MKLROOT/bin`.
 
 Intel installed everything as roolt.  This means you can't uncompress the examples.  Go
 to `/` and change the owner of all the directories to `patricklnoble`
-```console
+\blist{}
+```bash
 sudo chown -R opt patricklnoble
 ```
 Decompress all the `C` examples in `$MKLROOT/examples`
-```console
+\blist{}
+```bash
 tar -xzf examples_core_c.tgz
 ```
 I went to the `solverc` examples in `$MKLROOT/examples/solverc` and use the `makefile`
 there to build the static 64-bit examples
-```console
+\blist{}
+```bash
 make libintel64 compiler=gnu
 ```
 Have a look at the ouput below - this might help us compile and link our own versions.
-```console
+\blist{}
+```bash
 ----- Compiling gnu_lp64_omp_intel64_lib ----- cg_mrhs_stop_crt_c
 gcc -m64  -w -I"/opt/intel/compilers_and_libraries_2018.1.126/mac/mkl/include" \
 ./source/cg_mrhs_stop_crt_c.c \
@@ -88,12 +98,14 @@ gcc -m64  -w -I"/opt/intel/compilers_and_libraries_2018.1.126/mac/mkl/include" \
 _results/gnu_lp64_omp_intel64_lib/cg_mrhs_stop_crt_c.out > _results/gnu_lp64_omp_intel64_lib/cg_mrhs_stop_crt_c.res
 ```
 This wrote all the executables and output files here
-```console
+\blist{}
+```bash
 /opt/intel/mkl/examples/solverc/_results/gnu_lp64_omp_intel64_lib
 ```
 Looking in the `*.res` files, it looks like we were able to compile and run these examples!
 For example, looking inside `dss_sym_c.res`
-```console
+\blist{}
+```bash
 patricklnoble$ cat /opt/intel/mkl/examples/solverc/_results/gnu_lp64_omp_intel64_lib/dss_sym_c.res
 determinant power is 0
 determinant base is 2.25
@@ -106,6 +118,7 @@ Lets try to use a routine ourselves.  A  really simple call is `cblas_dscalx` wh
 vector-scalar multplication.  An intel example using it is here
 `/opt/intel/mkl/examples/cblas/source/cblas_dscalx.c`.  I have written a simple
 `main.cpp` to call it.
+\clist{}
 ```cpp
 #include <iostream>
 #include "mkl.h"
@@ -134,11 +147,13 @@ int main()
 }
 ```
 I compile it like this
-```console
+\blist{}
+```bash
 g++ main.cpp -I$MKLROOT/include ${MKLROOT}/lib/libmkl_intel_ilp64.a ${MKLROOT}/lib/libmkl_sequential.a ${MKLROOT}/lib/libmkl_core.a -lpthread -lm -ldl -o main
 ```
 which produces the correct result!
-```console
+\blist{}
+```bash
 patricklnoble$ ./main
 Compile MKL
 x[0] = 0
