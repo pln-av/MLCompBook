@@ -1,0 +1,65 @@
+% short cut for equation environment
+\newcommand{\eq}[1]{\begin{equation}#1\end{equation}} 
+
+% -----------------------------------------------------
+% Math font macros
+% -----------------------------------------------------
+\newcommand{\mb}[1]{ \mathbf{#1} }
+\newcommand{\mc}[1]{ \mathcal{#1} }
+
+% -----------------------------------------------------
+% Math operators
+% -----------------------------------------------------
+\newcommand{\dwrt}[2]{\frac{d#1}{d#2}}
+\newcommand{\pwrt}[2]{\frac{\partial#1}{\partial#2}}
+
+% -----------------------------------------------------
+% Linear Algebra macros
+% -----------------------------------------------------
+
+\renewcommand*{\arraystretch}{0.9}
+\newcommand{\msize}[2]{\left(#1 \times #2\right)}
+\newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle T}}}
+
+% mat for general matrix environment
+% matt where 't' is for 'three'
+% matx which uses [h|v]dots to show size
+\newcommand{\mat}[1]{
+    \begingroup % keep the change local
+    \setlength\arraycolsep{1.5pt}
+    \begin{pmatrix}#1\end{pmatrix}
+    \endgroup
+} 
+
+% columns
+\newcommand{\colt}[1]{\mat{#1_1 \\ #1_2 \\ #1_3}}
+\newcommand{\colx}[2]{\mat{#1_1 \\ #1_2 \\ \vdots \\ #1_#2}}
+\newcommand{\col}[1]{ \mathtt{c}\left(#1\right) }
+\newcommand{\matcol}[3] 
+{ 
+    \mat{ #1_{1#2} \\ #1_{2#2} \\ \vdots \\ #1_{#3#2} }
+}
+% rows 
+\newcommand{\rowt}[1]{\mat{#1_1 & #1_2 & #1_3}}
+\newcommand{\rowx}[2]{\mat{#1_1 & #1_2 & \hdots & #1_#2}}
+\newcommand{\row}[1]{ \mathtt{r}\left(#1\right) }
+\newcommand{\matrow}[3] 
+{ 
+    \mat{ #1_{#21} & #1_{#22} & \hdots & #1_{#2#3} }
+}
+% matrices
+\newcommand{\matt}[1]
+{\mat{
+    #1_{11} & #1_{12} & #1_{13} \\
+    #1_{21} & #1_{22} & #1_{23} \\
+    #1_{31} & #1_{32} & #1_{33}
+    } 
+}
+\newcommand{\matx}[3]
+{\mat{
+    #1_{11} & #1_{12} & \cdots & #1_{1 #3} \\
+    #1_{21} & #1_{22} & \cdots & #1_{2 #3} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    #1_{#21} & #1_{#2 2} & \cdots & #1_{#2 #3}
+    } 
+}
