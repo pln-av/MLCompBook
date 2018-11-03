@@ -1,6 +1,6 @@
 % short cut for equation environment
 \newcommand{\eq}[1]{\begin{equation}#1\end{equation}} 
-
+\newcommand{\eqa}[1]{\begin{align*}#1\end{align*}}
 % -----------------------------------------------------
 % Math font macros
 % -----------------------------------------------------
@@ -12,6 +12,9 @@
 % -----------------------------------------------------
 \newcommand{\dwrt}[2]{\frac{d#1}{d#2}}
 \newcommand{\pwrt}[2]{\frac{\partial#1}{\partial#2}}
+\newcommand{\func}[1]{\left(#1\right)}
+\newcommand{\ith}[1]{#1^{\scriptscriptstyle \textrm{th}}}
+\newcommand{\order}[1]{\mathcal{O}\func{#1}}
 
 % -----------------------------------------------------
 % Linear Algebra macros
@@ -20,7 +23,8 @@
 \renewcommand*{\arraystretch}{0.9}
 \newcommand{\msize}[2]{\left(#1 \times #2\right)}
 \newcommand{\transpose}[1]{\ensuremath{#1^{\scriptscriptstyle T}}}
-
+\newcommand{\inverse}[1]{\ensuremath{#1^{\scriptscriptstyle -1}}}
+\newcommand{\determinant}[1]{\mathtt{det}\func{#1}}
 % mat for general matrix environment
 % matt where 't' is for 'three'
 % matx which uses [h|v]dots to show size
@@ -34,7 +38,7 @@
 % columns
 \newcommand{\colt}[1]{\mat{#1_1 \\ #1_2 \\ #1_3}}
 \newcommand{\colx}[2]{\mat{#1_1 \\ #1_2 \\ \vdots \\ #1_#2}}
-\newcommand{\col}[1]{ \mathtt{c}\left(#1\right) }
+\newcommand{\col}[1]{ \mathtt{c}\func{#1} }
 \newcommand{\matcol}[3] 
 { 
     \mat{ #1_{1#2} \\ #1_{2#2} \\ \vdots \\ #1_{#3#2} }
