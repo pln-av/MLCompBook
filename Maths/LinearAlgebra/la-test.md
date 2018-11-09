@@ -27,3 +27,4 @@ or for 3x3 \eq{ \matt{a} }.  Finally, I need to define column and row operators.
 \eq{
     \col{A}_j = \matcol{A}{j}{m}
 }
+Now see this 
