@@ -20,6 +20,7 @@ BLAS is usually described as having three parts
 
 These notes continue those in *CompilingAndLinking1* and look at how to install, compile
 and link programs using the Intel MKL.
+
 ### MKL directories
 
 In the documentation it refers to `<Composer XD directory>` and `<mkl directory>`
